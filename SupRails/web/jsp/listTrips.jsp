@@ -28,6 +28,50 @@
     <body>
         <c:choose>
             <c:when test="${not empty trips}">
+                <form method="GET">
+                    <table>
+                        <tr>
+                            <td>
+                                <select id="departure" name="departure">
+                                    <option value="">Choose departure</option>
+                                    <c:forEach items="${stations}" var="station">
+                                        <option value="${station.id}"
+                                            <c:if test="${station.id == departure}">
+                                                selected="selected"
+                                            </c:if>
+                                        >
+                                            <c:out value="${station.name} (${station.city})"/>
+                                        </option>
+                                    </c:forEach>
+                                </select>
+                            </td>
+                            
+                            <td>
+                                <select id="arrival" name="arrival">
+                                    <option value="">Choose arrival</option>
+                                    <c:forEach items="${stations}" var="station">
+                                        <option value="${station.id}"
+                                            <c:if test="${station.id == arrival}">
+                                                selected="selected"
+                                            </c:if>
+                                        >
+                                            <c:out value="${station.name} (${station.city})"/>
+                                        </option>
+                                    </c:forEach>
+                                </select>
+                            </td>
+                            
+                            <td>
+                                <label for="price">Max price</label>
+                                <input type="text" name="price" id="price" value="${price}" />
+                            </td>
+                            
+                            <td>
+                                <input type="submit" value="Filter" />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
                 <table>
                     <tr>
                         <th>Departure</th>
@@ -35,8 +79,8 @@
                         <th>Price</th>
                         <th>Action</th>
                     </tr>
-                    <tr>
-                        <c:forEach items="${trips}" var="trip">
+                    <c:forEach items="${trips}" var="trip">
+                        <tr>
 
                             <c:url value="/admin/trips/delete" var="deleteTripUrl">
                                 <c:param name="id" value="${trip.id}" />
@@ -54,8 +98,8 @@
                                     <a href="${deleteTripUrl}">Delete</a>
                                 </c:if>
                             </td>
-                        </c:forEach>
-                    </tr>
+                        </tr>
+                    </c:forEach>
                 </table>
             </c:when>
             <c:otherwise>
