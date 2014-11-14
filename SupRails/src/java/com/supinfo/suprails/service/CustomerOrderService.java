@@ -10,6 +10,8 @@ import javax.ejb.Stateless;
 
 @Stateless
 public class CustomerOrderService {
+    @EJB
+    private PrinterMessageService printerMessageService;
 
     @EJB
     private CustomerOrderDao customerOrderDao;
@@ -17,6 +19,7 @@ public class CustomerOrderService {
     public void processCustomerOrder(CustomerOrder customerOrder) {
         customerOrderDao.addCustomerOrder(customerOrder);
         sendEmail(customerOrder.getCustomer());
+        printerMessageService.printCustomerOrder(customerOrder);
     }
 
     @Asynchronous
