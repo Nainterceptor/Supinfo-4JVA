@@ -1,11 +1,32 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Manager home</title>
     </h:head>
     <h:body>
         <h1>Manager home</h1>
+        <p>Welcome <h:outputText value="#{userController.loggedUser.firstname}"/></p>
+        
+        <h:dataTable value="#{employeeController.dataModel}" var="employee">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Firstname"/>
+                </f:facet>
+                ${employee.firstname}
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Lastname"/>
+                </f:facet>
+                ${employee.lastname}
+            </h:column>
+        </h:dataTable>
+        
+        <h:outputLink value="add_employee.xhtml">
+            <h:outputText value="Add employee"/>
+        </h:outputLink>
     </h:body>
 </html>

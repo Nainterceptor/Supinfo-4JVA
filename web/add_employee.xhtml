@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Add employee</title>
+    </h:head>
+    <h:body>
+        <h1>Add employee</h1>
+        
+        <h:form>
+            <h:outputLabel for="username" value="Username :"/>
+            <h:inputText id="username" value="#{employeeController.employee.username}" /><br/>
+            
+            <h:outputLabel for="password" value="Password :"/>
+            <h:inputText id="password" value="#{employeeController.employee.password}" /><br/>
+            
+            <h:outputLabel for="firstname" value="First name :"/>
+            <h:inputText id="firstname" value="#{employeeController.employee.firstname}" /><br/>
+            
+            <h:outputLabel for="lastname" value="Last name :"/>
+            <h:inputText id="lastname" value="#{employeeController.employee.lastname}" /><br/>
+            
+            <h:commandButton value="Create" action="#{employeeController.create()}" /><br/>
+        </h:form>
+    </h:body>
+</html>
