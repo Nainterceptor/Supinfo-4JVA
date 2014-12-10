@@ -1,11 +1,50 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Employee home</title>
     </h:head>
     <h:body>
         <h1>Employee home</h1>
+        
+        <h3>Worktimes</h3>
+        
+        <h:form>
+            <h:dataTable value="#{worktimeController.dataModel}" var="worktime">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Client"/>
+                    </f:facet>
+                    <h:outputText value="#{worktime.client.name}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Begin"/>
+                    </f:facet>
+                    <h:outputText value="#{worktime.beginDate}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="End"/>
+                    </f:facet>
+                    <h:outputText value="#{worktime.endDate}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Actions"/>
+                    </f:facet>
+
+                    <h:commandLink value="Remove" action="#{worktimeController.remove()}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+        
+        <h3>Links</h3>
+        <h:outputLink value="add_worktime.xhtml">
+            <h:outputText value="Add worktime"/>
+        </h:outputLink>
     </h:body>
 </html>
