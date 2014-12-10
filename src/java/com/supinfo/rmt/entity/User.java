@@ -17,6 +17,10 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -29,11 +33,23 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
+    
+    @NotEmpty
     private String username;
+    
+    @NotEmpty
     private String password;
+    
+    @NotEmpty
     private String firstname;
+    
+    @NotEmpty
     private String lastname;
+    
+    @NotEmpty @Email
     private String email;
+    
+    @NotNull @Past
     @Temporal(TemporalType.DATE)
     private Date birthDate;
 

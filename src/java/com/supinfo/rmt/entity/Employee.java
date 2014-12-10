@@ -9,6 +9,8 @@ package com.supinfo.rmt.entity;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -16,6 +18,7 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class Employee extends User {
+    @NotNull
     @ManyToOne @JoinColumn
     private Manager manager;
 

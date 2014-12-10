@@ -36,6 +36,7 @@ public class FillDataServlet extends HttpServlet {
         manager.setPassword("foo");
         manager.setFirstname("Foo");
         manager.setLastname("Foo");
+        manager.setEmail("foo@bar.com");
         manager.setBirthDate(new Date(19, 10, 01));
         userService.save(manager);
         
@@ -44,6 +45,7 @@ public class FillDataServlet extends HttpServlet {
         employee.setPassword("bar");
         employee.setFirstname("Bar");
         employee.setLastname("Bar");
+        employee.setEmail("bar@foo.com");
         employee.setBirthDate(new Date(20, 9, 18));
         employee.setManager(manager);
         userService.save(employee);

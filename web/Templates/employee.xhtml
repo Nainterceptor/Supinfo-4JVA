@@ -1,0 +1,15 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      template="authenticated.xhtml">
+
+    <ui:define name="links">
+        <h:outputLink value="employee_home.xhtml">
+            <h:outputText value="Home" />
+        </h:outputLink> |
+        <h:outputLink value="add_worktime.xhtml">
+            <h:outputText value="Add worktime"/>
+        </h:outputLink>
+    </ui:define>
+
+</ui:composition>

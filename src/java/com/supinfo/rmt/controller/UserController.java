@@ -13,6 +13,7 @@ import com.supinfo.rmt.services.UserService;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -25,23 +26,27 @@ public class UserController {
     @EJB
     private UserService userService;
     
+    @NotEmpty
     private String username;
+    @NotEmpty
     private String password;
     
     private User loggedUser;
     
     public String login() {
         loggedUser = userService.login(username, password);
-        Manager newManager = new Manager();
-        Employee newEmployee = new Employee();
-        userService.save(newManager);
-        userService.save(newEmployee);
-        if(loggedUser instanceof Manager) {
-            return "manager_home";
-        } else if(loggedUser instanceof Employee) {
-            return "employee_home";
-        } else {
+        
+        if(null == loggedUser) {
             return null;
+        }
+        
+        username = null;
+        password = null;
+        
+        if(loggedUser instanceof Manager) {
+            return "manager_home?faces-redirect=true";
+        } else {
+            return "employee_home?faces-redirect=true";
         }
     }
     

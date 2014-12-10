@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -27,15 +28,19 @@ public class Worktime implements Serializable {
     @Id @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
     
+    @NotNull
     @ManyToOne @JoinColumn
     private Client client;
     
+    @NotNull
     @ManyToOne @JoinColumn
     private Employee employee;
     
+    @NotNull
     @Temporal(TemporalType.DATE)
     private Date beginDate;
     
+    @NotNull
     @Temporal(TemporalType.DATE)
     private Date endDate;
 
